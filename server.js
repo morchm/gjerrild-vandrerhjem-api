@@ -15,6 +15,7 @@ const password = encodeURIComponent("adminpassword");
 
 
 // --- DB Mongo og Mongoose
+// --- "cluster0.wnwuxcg.mongodb.net" - Til MongoDB connection
 const mongoose = require( 'mongoose' )
 mongoose.connect( `mongodb+srv://${username}:${password}@cluster0.wnwuxcg.mongodb.net/` )
 
