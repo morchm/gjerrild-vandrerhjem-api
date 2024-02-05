@@ -1,6 +1,6 @@
 const express = require( 'express' )
 const app = express ()
-const PORT = 5000
+const PORT = 10000
 
 // --------- CORS 
 // ----------------------------------------------
@@ -9,9 +9,14 @@ const cors = require('cors')
 // "Så der er adgang 'udefra' (andre domæner/porte) til dataerne"
 app.use(cors( {origin: true} ))
 
+const username = encodeURIComponent("maxewss");
+const password = encodeURIComponent("adminpassword");
+
+
+
 // --- DB Mongo og Mongoose
 const mongoose = require( 'mongoose' )
-mongoose.connect( "mongodb://127.0.0.1/Gjerrild-Vandrerhjem" )
+mongoose.connect( `mongodb+srv://${username}:${password}@cluster0.wnwuxcg.mongodb.net/` )
 
 const db = mongoose.connection;
 db.on( 'error', ( error ) => console.log( "FEJL: " + error ) )
