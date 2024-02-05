@@ -2,6 +2,12 @@ const express = require( 'express' )
 const app = express ()
 const PORT = 5000
 
+// --------- CORS 
+// ----------------------------------------------
+const cors = require('cors')
+// Dem, som bruger alt andet end localhost:5000 til serveren, må også godt bruge hjemmesiden
+// "Så der er adgang 'udefra' (andre domæner/porte) til dataerne"
+app.use(cors( {origin: true} ))
 
 // --- DB Mongo og Mongoose
 const mongoose = require( 'mongoose' )
