@@ -8,7 +8,7 @@ router.use( formData.parse() );
 router.get( '/', async (req, res) => {
     console.log ("Aktiviteter - GET/Hent")
     try {
-        const activity = await Activities.findOne()
+        const activity = await Activities.find()
         res.status( 200 ).json( activity)
     } catch (error) {
         res.status( 500 ).json( { message: "Der er opstået en fejl ved GET" } )
@@ -16,9 +16,9 @@ router.get( '/', async (req, res) => {
 } )
 
 // opret
-router.post('/', async (req, res) => {
+router.post('/activity', async (req, res) => {
 
-    console.log("Contactform - POST/opret ny");
+    console.log("Aktiviteter - POST/opret ny");
 
     
     try {
@@ -31,7 +31,6 @@ router.post('/', async (req, res) => {
     }
 
 });
-
 
 
 // --- RET/PUT - admin

@@ -19,4 +19,4 @@ const contactformSchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Contactform', contactformSchema, 'contactforms')
+module.exports = mongoose.model('Contactform', contactformSchema)

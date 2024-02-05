@@ -4,7 +4,6 @@ const formData = require( 'express-form-data' );
 const router = express.Router();
 router.use( formData.parse() );     
 
-
 // --- GET - alle
 router.get( '/', async (req, res) => {
     console.log ("About - GET/Hent")
@@ -16,27 +15,25 @@ router.get( '/', async (req, res) => {
     }
 } )
 
-// // opret
-// router.post('/', async (req, res) => {
+// opret
+router.post('/', async (req, res) => {
 
-//     console.log("Contactform - POST/opret ny");
+    console.log("Contactform - POST/opret ny");
 
     
-//     try {
-//         let about = new AboutUs(req.body);
-//         about = await about.save();
-//         res.status(201).json({ message: "Ny er oprettet", about: about });
+    try {
+        let about = new AboutUs(req.body);
+        about = await about.save();
+        res.status(201).json({ message: "Ny er oprettet", about: about });
 
-//     } catch (error) {
-//         res.status( 500 ).json( { message: "Der er opstået en fejl", about: null } );
-//     }
+    } catch (error) {
+        res.status( 500 ).json( { message: "Der er opstået en fejl", about: null } );
+    }
 
-// });
-
-
+});
 
 // --- RET/PUT - admin
-router.put( '/admin', async ( req, res ) => {
+router.put( '/admin',     async ( req, res ) => {
 
     console.log( "About - PUT/ret" )
 

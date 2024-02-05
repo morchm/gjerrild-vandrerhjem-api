@@ -21,4 +21,4 @@ const AktiviteterSchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Activities', AktiviteterSchema, 'activities')
+module.exports = mongoose.model('Activities', AktiviteterSchema)

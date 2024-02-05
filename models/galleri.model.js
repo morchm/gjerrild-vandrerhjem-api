@@ -16,6 +16,16 @@ const galleryItemSchema = new mongoose.Schema( {
             image: String
         }
     ],
+    bedrooms: [
+        {
+            image: String
+        }
+    ],
+    events: [
+        {
+            image: String
+        }
+    ],
     vandrerhjem: [
         {
             image: String
