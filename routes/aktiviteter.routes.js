@@ -9,7 +9,7 @@ router.get( '/', async (req, res) => {
     console.log ("Aktiviteter - GET/Hent")
     try {
         const activity = await Activities.find()
-        res.status( 200 ).json( activity)
+        res.status( 200 ).json( {"activities": activity})
     } catch (error) {
         res.status( 500 ).json( { message: "Der er opstået en fejl ved GET" } )
     }
