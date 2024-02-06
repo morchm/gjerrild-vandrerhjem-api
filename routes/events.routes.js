@@ -2,7 +2,13 @@ const Events = require( '../models/events.model' )
 const express = require ( 'express' )
 const formData = require( 'express-form-data' );
 const router = express.Router();
-router.use( formData.parse() );    
+router.use( formData.parse() );  
+
+const cors = require('cors')
+// Dem, som bruger alt andet end localhost:5000 til serveren, må også godt bruge hjemmesiden
+// "Så der er adgang 'udefra' (andre domæner/porte) til dataerne"
+app.use(cors( {origin: true} ))
+
 
 // --- GET - alle
 router.get( '/', async (req, res) => {
