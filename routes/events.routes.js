@@ -16,7 +16,7 @@ router.get( '/', async (req, res) => {
 } )
 
 // opret
-router.post('/activity', async (req, res) => {
+router.post('/', async (req, res) => {
 
     console.log("Events - POST/opret ny");
 
