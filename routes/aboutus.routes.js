@@ -9,7 +9,7 @@ router.get( '/', async (req, res) => {
     console.log ("About - GET/Hent")
     try {
         const aboutUs = await AboutUs.find()
-        res.status( 200 ).json( aboutUs)
+        res.status( 200 ).json( {"about" : aboutUs})
     } catch (error) {
         res.status( 500 ).json( { message: "Der er opstået en fejl" } )
     }
