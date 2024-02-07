@@ -15,6 +15,26 @@ router.get( '/', async (req, res) => {
     }
 } )
 
+// --- GET - id
+router.get( '/:id', async ( req, res ) => {
+    console.log( "Aktiviteter - GET/hent id" );
+
+    try {
+        const {id: aktiviteterId} = req.params;
+        console.log(aktiviteterId);
+        const activity = await Activities.findById(aktiviteterId);
+
+        if(!activity) {
+            res.status( 404 ).json( { error: "Id blev ikke fundet" } )
+        } else {
+            res.json({ activity })
+        }
+
+    } catch (err) {
+        res.status( 500 ).json( { message: "Der er opstået en fejl med GET af id " + err.message} )
+    }
+} )
+
 // opret
 router.post('/activity', async (req, res) => {
 
