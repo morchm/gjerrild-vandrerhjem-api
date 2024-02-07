@@ -63,7 +63,7 @@ router.put( '/admin/:id', async ( req, res ) => {
         res.status( 200 ).json( { message: "Der er rettet!", activity: activity } );
 
     } catch ( error ) {
-        res.status( 500 ).json( { message: "Der er opstået en fejl", activity: null } ); 
+        res.status( 500 ).json( { message: "Der er opstået en fejl" + error.message, activity: null } ); 
     }
 
 } );
