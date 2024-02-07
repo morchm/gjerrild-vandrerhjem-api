@@ -57,10 +57,9 @@ router.post('/activity', async (req, res) => {
 router.put( '/admin/:id', async ( req, res ) => {
 
     console.log( "Aktiviteter - PUT/ret" )
-
     try {
-
-        let activity = await Activities.findOneAndUpdate( {}, req.body, { new: true } ); 
+        const {id: aktiviteterId} = req.params;
+        let activity = await Activities.findOneAndUpdate( {_id: ObjectId(aktiviteterId)}, req.body, { new: true } ); 
         res.status( 200 ).json( { message: "Der er rettet!", activity: activity } );
 
     } catch ( error ) {
