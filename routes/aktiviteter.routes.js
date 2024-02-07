@@ -1,4 +1,5 @@
 const Activities = require( '../models/aktiviteter.model' )
+const mongo = require(`mongoose`)
 const express = require ( 'express' )
 const formData = require( 'express-form-data' );
 const router = express.Router();
@@ -59,11 +60,11 @@ router.put( '/admin/:id', async ( req, res ) => {
     console.log( "Aktiviteter - PUT/ret" )
     try {
         const {id: aktiviteterId} = req.params;
-        let activity = await Activities.findOneAndUpdate( {_id: ObjectId(aktiviteterId)}, req.body, { new: true } ); 
+        let activity = await Activities.findOneAndUpdate( {_id: new mongo.Types.ObjectId(aktiviteterId)}, req.body, { new: true } ); 
         res.status( 200 ).json( { message: "Der er rettet!", activity: activity } );
 
     } catch ( error ) {
-        res.status( 500 ).json( { message: "Der er opstået en fejl" + error.message, activity: null } ); 
+        res.status( 500 ).json( { message: "Der er opstået en fejl", errorMessage: error.message, activity: null } ); 
     }
 
 } );
