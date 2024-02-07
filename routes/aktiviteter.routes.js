@@ -54,7 +54,7 @@ router.post('/activity', async (req, res) => {
 
 
 // --- RET/PUT - admin
-router.put( '/admin', async ( req, res ) => {
+router.put( '/admin/:id', async ( req, res ) => {
 
     console.log( "Aktiviteter - PUT/ret" )
 
