@@ -1,4 +1,5 @@
 const Events = require( '../models/events.model' )
+const mongo = require(`mongoose`)
 const express = require ( 'express' )
 const formData = require( 'express-form-data' );
 const router = express.Router();
@@ -16,6 +17,23 @@ router.get( '/', async (req, res) => {
     try {
         const event = await Events.find()
         res.status( 200 ).json( {"event":event} )
+    } catch (error) {
+        res.status( 500 ).json( { message: "Der er opstået en fejl ved GET" } )
+    }
+} )
+
+
+// --- GET - id
+router.get( '/admin/:id', async (req, res) => {
+    console.log ("Events - GET/Hent")
+    try {
+        const {id: eventID} = req.params;
+        const event = await Events.findById(eventID)
+        if(!event) {
+            res.status( 404 ).json( { error: "Id blev ikke fundet" } )
+        } else {
+            res.json({ event })
+        }
     } catch (error) {
         res.status( 500 ).json( { message: "Der er opstået en fejl ved GET" } )
     }
@@ -40,17 +58,17 @@ router.post('/', async (req, res) => {
 
 
 // --- RET/PUT - admin
-router.put( '/admin', async ( req, res ) => {
+router.put( '/admin/:id', async ( req, res ) => {
 
     console.log( "Events - PUT/ret" )
 
     try {
-
-        let event = await Events.findOneAndUpdate( {}, req.body, { new: true } ); 
+        const {id: eventID} = req.params;
+        let event = await Events.findOneAndUpdate( {_id: new mongo.Types.ObjectId(eventID)}, req.body, { new: true } ); 
         res.status( 200 ).json( { message: "Der er rettet!", event: event } );
 
     } catch ( error ) {
-        res.status( 500 ).json( { message: "Der er opstået en fejl", event: null } ); 
+        res.status( 500 ).json( { message: "Der er opstået en fejl", errorMessage: error.message, event: null } ); 
     }
 
 } );
