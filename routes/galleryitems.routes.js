@@ -88,4 +88,21 @@ router.put( '/admin/:id', upload.single( 'image' ), async ( req, res ) => {
 } );
 
 
+router.delete('/admin/:id', async (req, res) => {
+
+    console.log("Gallery - DELETE/slet")
+
+    try {
+
+        let slet = await GalleryItems.findByIdAndRemove(req.params.id);
+        if ( slet ) res.status( 200 ).json( { message: "Der er slettet", slettet: true } );
+        else res.status( 400 ).json( { message: "Id findes ikke", slettet: null } );
+
+    } catch (error) {
+        res.status( 500 ).json( { message: "Der er opstået en fejl" } ); // 500 = serverproblem
+    }
+
+});
+
+
 module.exports = router;

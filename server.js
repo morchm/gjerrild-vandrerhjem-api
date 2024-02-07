@@ -44,6 +44,7 @@ app.use( '/activities', require( './routes/aktiviteter.routes' )  )
 app.use( '/restaurant', require( './routes/restaurant.routes' )  )
 app.use( '/bedrooms', require( './routes/bedrooms.routes' )  )
 app.use( '/events', require( './routes/events.routes' )  )
+app.use( '/booking', require( './routes/event-booking.routes' )  )
 
 
 // --- NO MATCH
