@@ -16,7 +16,7 @@ router.get( '/', async (req, res) => {
     console.log ("Events - GET/Hent")
     try {
         const event = await Events.find()
-        res.status( 200 ).json( {"event":event} )
+        res.status( 200 ).json( {event :event} )
     } catch (error) {
         res.status( 500 ).json( { message: "Der er opstået en fejl ved GET" } )
     }
